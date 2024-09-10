@@ -218,6 +218,7 @@ OTRAS FUNCIONES:
 
 ACTORES EN UN SISTEMA GESTOR DE BASE DE DATOS
 
+
 EL GESTOR DE BASE DE DATOS :
     se trata de un conjunto de programas no visibles al usuario final que se encargan de la privacidad, la integridad, la seguridad de los datos y la interaccion con el sistema operativo.
 
@@ -229,6 +230,7 @@ EL GESTOR DE BASE DE DATOS :
 
     tiene que haber un usuario administrado encargador de centralizar todas estas tareas
 
+
 DICCIONARIO DE DATOS:
     en una base de datos donde se guardan todas las propiedades de la base de datos, decripcion de la estructura, relaciones entre los datos, etc
 
@@ -239,8 +241,10 @@ DICCIONARIO DE DATOS:
         las descripciones de las cuentas de usuario
         los permisos de los usuarios
 
+
 USUARIOS DE LOS SGBD:
     podemos definir a los usuarios como toda persona que tenga todo tipo de contacto con el sistema de bse de datos desde que se diseña elabora, termina y usa
+
 
 ADMINISTRADOR DE BASE DE DATOS (DBA):
     es la persona o equipo de personas profesionales responsables del control y manejo del sistema de base de datos, generalmente tiene (n) experiencia en DBMS, diseño de bases de datos, sistemas operativos, comunicacion de datos, hardware y programacion
@@ -253,8 +257,10 @@ ADMINISTRADOR DE BASE DE DATOS (DBA):
         mantenimiento y seguimiento de la seguridad en la bse de datos
         mantenimiento general del sistema gestor de base de datos
 
+
 PROGRAMDAORES DE APLICACIONES:
     los profesionales en computacionque interactuan por medio de llamadas en DML (lenguaje de manipulacion de datos), las cuales estan incorporadas en un programa escrito en un lenguaje de programacion (por ejemplo COBOL, C, Pascal)
+
 
 LOS LENGUAJES:
     un sistema gestor de bases de daots debe proporcionar una serie de lenguajes para la definicion y manipulacion de datos:
@@ -265,6 +271,7 @@ LOS LENGUAJES:
         |--> DML
         |
         |--> DCL
+
 
 USUARIOS SOFITSTICADOS:
     los usuarios sofisticados interactuan con el sistema sin escribir programas, en cambio escriben sus preguntas en un lenguaje de consutlas de base de datos
@@ -279,10 +286,176 @@ USUARIOS INGENUOS:
 --------------------------------------------------------------------------------------------------------
 
 
-VENTAJAS DE UTILIZAR UN SISTEMA GESTOR DE BASE DE DATOS
+VENTAJAS DE UTILIZAR UN SISTEMA GESTOR DE BASE DE DATOS:
+    seguridad de datos
+    control o manipulacion de datos
+    actualizacion de los datos en linea
+    reduccion de tiempos
+    mantener organizacion coherente de los datos
+    simplificacion del trabajo
+    generacion de informes apartir de los datos
+    accesos concurrentes a las BDD
+
+----------------------------------------------------------------
+*importante*
+
+ARQUITECTURA DE UN SISTEMA GESTOR DE BASES DE DATOS:
+
+    NIVEL EXTERNO: -> vista particular de cada usuario
+        consiste en muchas vistas externas o modelos externos diferentes de la base de datos. cada uusario tiene un modelo del mundo real representado en una forma que es adecuada para dicho usuario
+
+    NIVEL CONCEPTUAL: -> vista general
+        incluye toda la estructura de informacion de la base de datos, como la ve el usuario. es la "vista comunitaria" de los datos e incluye una descripcion de todos los datos que estan disponibles para compartir
+
+    NIVEL INTERNO: -> codigo fuente
+        cubre la implementacion fisica de la base de datos. Incluye las estructuras de datos y organizaciones de archivo utilizadas para almacenar datos en dispositivos de almacenamiento fisicos. EL DBMS elegido determina, en gran medida, cuales estructuras estaran disponibles
 
 
+EJECUCION DE UNA TAREA POR PARTE DEL SGBD:
+
+    ° peticion de la aplicacion del usuario
+    ° examen de la peticion en el marco del esquema externo del usuario
+    ° transformacion del esquema externo al conceptual (logico)
+    ° transformacion del esquema conceptual (logico) al interno (fisico)
+    ° interaccion con el almacenamiento interno (fisico)
+    ° envio de los datos a los buffers del SGBD
+    ° transformaciones de los datos entre el esquema conceptual (logico) y el externo
+    ° transferencia de los datos necesarios al area de trabajo del usuario
 
 
+DISEÑO DE LA BASE DE DATOS -> MODELO CONCEPTUAL:
 
+    FASES DEL DISEÑO DE UNA BDD:
+        1- ANALISIS DE REQUISITOS
+           2-  DISEÑO CONCEPTUAL
+              3-  IMPLEMENTACION EN EL SGBD
 
+MODELADO DE DATOS:
+    es la representacion de cosas del mundo real
+
+    es una representacion de la realidad que contiene las caracteristicas generales de algo que se va a realizar
+
+    en base de datos, esta representacion la elaboramos de forma grafica
+
+    es una coleccion de herramientas conceptuales para describir los datos, las relaciones que existen entre ellos, semantica asociada a los datos y restricciones de consistencia
+
+CATEGORIAS DE CONCEPTOS QUE SE PUEDEN MODELAR O ABSTRAER
+
+    objetos fisicos -> televison, avion
+    especificaciones, diseños o descripciones de cosas -> especificaciones de un producto, descripcion del vuelo
+    lugares -> tienda, aeropuerto
+    transacciones -> venta, pago, reservacion
+    roles de la gente -> cajero, piloto
+    contenedores de otras cosas -> tienda, avion
+    cosas en un contenedor -> articulo pasajero
+    conceptos abstractos -> enfermedades
+    eventos -> venta, robo, reunion, vuelo, accidente
+    reglas y politicas, politica de devolucion, politica cancelacion
+    catalogo -> catalogo productos, catalogo partes
+    registros -> recibos, contratos, bitacoras
+    manuales, libros -> manual reparacion, manual empleado
+
+ABSTRACCION:
+    ES LA CAPACIDAD PARA SELECCIONAR SEGMENTOS DE LA REALIDAD Y ANALIZARLOS DE MANERA ORDENADA Y SISTEMATICA
+
+NIVELES DE ABSTRACCION:
+    USUARIOS FINALES - > VISTAS DE USUARIO
+    DBA (ADMIN) - > NIVEL CONCEPTUAL
+    SGBD - > NIVEL FISICO
+
+ENTONCES, QUE ES EL MODELADO DE DATOS?
+    MUNDO REAL -> ANALIZAR -> INTERPRETAR -> ABSTRAER -> MODELO (MODELAR)
+
+MODELO CONCEPTUAL
+|
+|   se trata de obtener el esquema conceptual de la base de datos a partir de la lista descriptiva
+|    de objetos y asociaciones  identificadas en la organizacion durante el analisis
+|
+|    se recomienda realizar esta MODELIZACION en varias etapas. luego de cada etapa se realiza una
+|     DEPURACION de la etapa precedente
+|
+|
+v
+el modelo conceptual es una modelacion a alto nivel y en ella se usa el diagrama ENTIDAD RELACION E/R
+
+el diagrama ER es una manera de modelar esta informacion. este modelo permite tender un puente sobre la brecha que existe entre la representacion del mundo real y la manera coo debe ser modelada en un sistema de computadora
+
+el mundo real consiste de un conjunto de objetos llamados ENTIDADES. estos objetos no existen aislados, es decir existen RELACIONES entre ellos
+
+MODELO ENTIDAD-RELACION
+    fue introducido por Peter Chen
+    sus siglas: E-R "entity relationship" o DER "Diagrama de Entidad Relacion"
+    el modelo de ER se basa en una percepcion del mundo real, la cual esta formada por OBJETOS BASICOS llamados ENTIDADES y las relaciones entre estos objetos asi como las caracteristicas de estos objetos llamados atributos
+
+CONSISTE EN LOS SIGUIENTES PASOS
+
+    1- se parte de una descripcion textual del problema o sistema de informacion a automatizar  (los requisitos)
+
+    2- se hace una lista de los sustantivos y verbos que aparecen
+
+    3- los sustantivos son posibles entidades o atributos
+
+    4- los verbos son posibles relaciones
+
+    5- analizando las frases se determina la cardinalidad de las relaciones y otros detalles
+
+    6- se elabora el diagrama (o diagramas) entidad-relacion
+
+    7- se caracteriza por utilizar una serie de simbolos y reglas para representar los datos y sus relaciones
+
+OTRA DEFINICION DE ABSTRAER:
+En el contexto de los *modelos Entidad-Relación (E-R)* y de las bases de datos en general, *abstraer* se refiere a simplificar la representación de la realidad, enfocándose en los aspectos más importantes y dejando de lado los detalles innecesarios para el propósito del sistema. Es un proceso mediante el cual se *identifican los elementos clave* de un dominio o problema del mundo real y se *representan de manera concisa y clara* en el modelo
+
+ENTIDADES(DOS TIPOS):
+    un tipo de ENTIDAD DEBIL es dependiente de algun otro tipo de entidad para su existencia, son representadas por rectangulos de doble linea
+
+    un tipo de ENTIDAD FUERTE no depende su existencia de otra entidad, son representadas por rectangulos de linea sencilla
+
+ATRIBUTOS:
+    es una caracteristica de interes o un hecho sobre una entidad o sobre una relacion
+
+    los atributos representan las propiedades basica de las entidades y de las relaciones
+
+    graficamente, se representan mediante ovalos que cuelgan de las entidades o relaciones a la que pertenecen
+
+    una linea conecta el ovalo del atributo con el rectangulo del conjunto de entidades que describe
+
+TIPOS DE ATRIBUTOS:
+    MONOVALUADO:
+        en su mayoria, los atributos tienen un solo valor para una entidad en particular, y reciben el calificativo de MONOVALUADOS, por ejemplo, edad es un atributo monvaluado de persona
+
+    MULTIEVALUADO:
+        hay casos en los que un atributo puede tener un conjunto de valores para la misma entidad, por ejemplo, los estudiantes pueden tener mas de una direccion de correo electronico, se usa un ovalo doble al rededor del nombre del atributo
+
+    ATRIBUTOS COMPUESTOS:
+        se pueden dividir en componentes mas pequeños, que representan atributos mas basicos con su propio significado independiente, por ejemplo, el atributo direccion de la entidad casa, se puede dividir en; domicilio, ciudad, pais, codigo postal
+
+        se indica que un atributo es compuesto al escribir su nombre en un ovalo en la forma usual y luego dibujar ovalor para los componentes individuales que se conectan mediante lineas al ovalo del atributo compuesto
+
+        LOS ATRIBUTOS NO DIVISIBLES SE DENOMINAN ATRIBUTOS SIMPLES O ATOMICOS
+
+    ATRIBUTO DERIVADO:
+        en algunos casos se relacionan dos o mas valores de atributos; ejemplo, los atributos edad y fecha de nacimento de nacimiento de esa persona
+
+        para una entidad persona en particular, el valor de la edad se puede determinar a partir de la fecha actual y el valor de fechaNacimiento de esa persona
+
+        por lo tanto, se dice que el atributo edad es un atributo derivado, y es derivable del atributo fechaNacimiento, el cual es un atributo almacenado
+
+    ATRIBUTO ALMACENADO:
+        son los atributos cuyos valores son almacenados directamente en la base de datos, nacionalidad de una persona, nombre de una persona, fecha de nacimiento de una persona, cantidad de producto comprado, cantidad de producto vendido
+
+    ATRIBUTO CALCULADO:
+        valor calculado apartir de otra informacion ya existente (atributos, entidades relacionadas)
+
+        edad de una persona (se calcula apartir de la fecha de nacimiento)
+
+        existencias de un producto (cantidad de compra -cantidad de venta)
+
+        cantidad de empleados (se calcula contando el numero de entidades del tipo empleado)
+
+    DOMINIO DE LOS ATRIBUTOS:
+        cada uno de los atributos simples de un tipo de entidades esta asociado a un conjunto de valores (o dominio), que especifica los valores que es posible asignar a ese atributo para cada entidad individual
+
+        por ejemplo, si el intervalo de edades permitido para los empleados es de 16 a 70, podemos especificar el conjunto de valores para el atributo edadEMpleado como el conjunto de numeros entero entre 16 y 70
+
+        LOS CONJUNTOS DE VALORES NO SE REPRESENTAN EN LOS DIAGRAMAS E-R
