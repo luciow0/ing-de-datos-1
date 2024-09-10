@@ -1,4 +1,4 @@
-BASES DE DATOS 1
+BASES DE DATOS 1. CLASE 2, LA CLASE 1 NO VIMOS UN SORONGOLIO
 
 una base de datos es un conjunto de informacion almacenada y consultada sistematicamente
 no almaceno y consulto los datos al azar, la manipulacion de la infromacion se realiza de forma sistematica con reglas definidas -> si no hay un sistema no podemos hablar de una base de datos
@@ -25,9 +25,9 @@ modelo entidad relacion:
     el proceso de abstraer la necesidad del cliente y diseñar las tablas de datos, se hacen con el modelo de entidad relacion, se dibujan las entidades y las relaciones que van a tener entre ellas
 
 SQL: structured query lenguage, se divide en tres lenguajes:
-    DDL (DATA DEFINITION LENGUAGE): define las estructuras, tablas, registros, campos, pero no llenas informacion
-    DML (DATA MANIPULATION LENGUAGE): con DML haces CRUD
-    DCL (DATA CONTROL LENGUAGE): control de los permisos de las bases de datos
+    DDL (DATA DEFINITION LENGUAGE): define las estructuras, tablas, registros, campos, pero no llenas informacion con DDL, solo definis los esquemas de la bdd
+    DML (DATA MANIPULATION LENGUAGE): con DML haces CRUD, para manipular los datos de la bdd
+    DCL (DATA CONTROL LENGUAGE): control de los permisos de las bases de datos, administrar usuarios y seguridad en la bdd
     CRUD: create, read, update, delete
     es inaceptable la redundancia de datos en bases de datos relacionales, su foco es la integridad de datos
 
@@ -78,6 +78,7 @@ ELEMENTOS DE UN SISTMEA DE BASE DE DATOS:
     USUARIOS:
         personas que manipulan los datos del sistema
 
+
 --------------------------------------------------------------------------------------------------------
 
 
@@ -90,23 +91,197 @@ MODELOS DE DATOS:
         modelo de datos en el cual la organizacion es una etructura similar a un arbol.
         permite que la informacion se organice en relaciones padre/hijo.
         todos los artibutos de un registro especifico son catalogados bajo un tipo de entidad o tipo de registro.
+
     MODELO DE RED:
         conformado por una coleccion o set de registros conectados entre si por medio de ENLACES.
         un REGISTRO es una coleccion o conjunto de atributos donde cada uno de ellos contiene solamente un valor.
         el enlace es la asociacion entre dos registros.
         un nodo hijo puede tener mas de un nodo padre y varios nodos pueden ser la via de acceso a la estructura.
+
     MODELO RELACIONAL:
         modelo de datos basado en la logica de predicados y en la teoria de conjuntos.
         se basa en el uso de relaciones (conjuntos de datos o tuplas).
         es el modelo mas utilizado en la actualidad para modelar y administrar datos dinamicamente
+
     MODELO ORIENTADO A OBJETOS:
         la inforamcion se representa mediante objetos como en la POO
         un ODBMS (base de datos orientada a objetos) hace que los objetos de la base de datos hace que los datos aparezcan como objetos de un lenguaje de programacion
         un ODBMS extiende los lenguajes con datos persistentes de forma transparente
         si bien no es un modelo, la iniciativa ODMG(object data management group) proporciona estandares sobre la base de datos orientada a objetos
+
+
+--------------------------------------------------------------------------------------------------
+
+
+TIPOS DE BASES DE DATOS:
     BASE DE DATOS NOSQL:
-     NOSQL se refiere a una base de datos no relacional
-     a diferencia de las bases de datos relacionales,
+        NOSQL se refiere a una base de datos no relacional
+        a diferencia de las bases de datos relacionales, que estan basadas en una tabla, las bases de datos NoSQL estan orientadas a los documentos y le permiten almacenar y recuperar datos en formatos que no sean tablas
+        los sistemas de gestion de basesd e datos NOSQL difieron del modelo clasico de SGBDR en aspectos importantes, siendo el mas destacado que no usan SQL como lenguaje principal de consultas
+        se clasifican segun su forma de almacenar los datos (clave-valor, columnares, documentales y grafos)
+
+    CENTRALIZADA:
+        la inforamcion (datos) se almacena en una ubicacion centralizada y los usuraios de diferentes ubicaciones pueden acceder a estos datos
+        en este tipo de base de datos se aplican diversos tipos de procedimientos de autenticacion para la verificacion y validacion de los usuarios finales
+        asimismo, los procedimientos de la aplicacion proporcionan un numero de registro que mantiene un registro del uso de datos
+
+    DISTRIBUIDA:
+        una base de datos distribuida es aquella donde las diferentes partes de la BD se almacenan en varias ubicaciones fisicas, y en la que el procesamiento se dispersa o se replica en diferentes puntos de una red
+        hay DOS TIPOS de BD distribuidas -> HOMOGENEA (1) Y HETEROGENEA (2):
+            HOMOGENEA:
+                todas las ubicaciones fisicas tienen el mismo hardware subyacente y ejecutan los mismos sistemas operativos y aplicaciones de BD
+            HETEROGENEA:
+                el hardware, los sistemas operativos o las aplicaciones pueden ser diferentes en cada una de las ubicaciones
+
+    GRAFICA:
+        una base de datos orientada a graficos o base de datos grafica, es un tipo de bdd NOSQL que utiliza teoria de grafos para almacenar, mapear y consultar relaciones.
+        este tipo de BDD son basicamente colecciones de nodos y bordes(enlaces), donde cada nodo representa a una entidad y cada enlace (borde) una conexion entre nodos.
+        actualmente estan siendo muy utilizadas por las empresas para emplear interconexiones. por ej, para extrar datos sobre clientes en redes sociales
+
+    EN LA NUBE:
+        se trata de una base de datos que se ha optimizado o creado para un entorno virtualizado (en la nube), ya sea una nube hibrida, privada o publica.
+        estas bases de datos en la nube tienen la ventaja de pagar por la capacidad de almacenamiento y el ancho de banda para cada usuario, ademas de ofrecer escalabilidad y alta disponibilidad
+        ademas, brinda a las empresas la oportunidad de admitir aplicaciones empresariales en una implementacion de software como servicio
+
+finalmente la base de datos se puede considerar como una coleccion nominada de archivos relacionados
+
+TERMINOLOGIA
+
+|----------------------------------|
+| RELACIONAL    VS    TRADICIONAL  |
+|----------------------------------|
+|relacion             tabla        |
+|tupla                registro     | -> una fila completa de la tabla
+|atributo             campo        | -> valor del atributo
+|dominio              tipo de dato | -> tipo de dato, ubicado en la cabecera (head)
+|clave primaria    clave primaria  |
+|grado         cantidad de columnas|
+|cardinalidad   cantidad de filas  |
+|----------------------------------|
+
+--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+CLASE 3
+
+SISTEMA DE GESTION DE BASE DE DATOS -> sw utilizado para gestionar, almacenar y recuperar bases de datos, proporciona una interfaz que permite relizar el CRUD, actua como intermediario entre las apps y los datos
+
+ACTORES DE UN SGBD
+ARQUITECTURA DE UN SGBD
+DISEÑO CONCEPUTAL DE UNA BDD
+MODELO ENTIDAD RELACION
+
+
+-----------------------------------------------------------------------------------------------------
+
+
+FUNCIONES DE UN SGBD
+|
+|    los SGBD pueden considerarse como intermediarios entre las aplicaciones y la representacion de los |    datos
+|    asi, los desarrolladores ven los datos desde una perspectiva de mas alto nivel
+|    esa perspectiva es la  del modelo de base de datos utilizado
+|
+v
+---->   proporcionar independencia de los datos y las aplicaciones.
+        asi, se puede diseñar la base de datos incluso antes que las aplicaciones, y ese diseño permitira que se desrrollen mupliples aplicaciones posteriormente
+
+NIVELES:
+    FISICO
+    LOGICO
+    VISTAS
+
+RESTRICCIONES:
+    UNICIDAD
+    VALORES NULOS
+    TIPO DE DATO ALMACENADO
+    TAMAÑO
+
+MECANISMOS DE RECUPERACION:
+    TRANSACCIONES
+
+CONTROL DE CONCURRENCIA:
+    BLOQUEO
+    SERIALIZACION
+
+CONTROL DE ACCESOS:
+    USUARIOS
+    PRIVILEGIOS
+
+OTRAS FUNCIONES:
+    BACKUP
+    COMPRENSION DE DATOS
+    IMPORTAR DATOS
+    EXPORTAR DATOS
+
+--------------------------------------------------------------------------------------------------------
+
+
+ACTORES EN UN SISTEMA GESTOR DE BASE DE DATOS
+
+EL GESTOR DE BASE DE DATOS :
+    se trata de un conjunto de programas no visibles al usuario final que se encargan de la privacidad, la integridad, la seguridad de los datos y la interaccion con el sistema operativo.
+
+    proporciona una interfaz entre los datos, los programas que los manejan y el sistema operativo
+
+    cualquier operacion que el usuario hace contra la base de datos esta controalda por el gestor
+
+    el gestor almacena una descripcion de datos en lo que llamamos diccionario de datos, asi como los usuarios permitidos y los permisos
+
+    tiene que haber un usuario administrado encargador de centralizar todas estas tareas
+
+DICCIONARIO DE DATOS:
+    en una base de datos donde se guardan todas las propiedades de la base de datos, decripcion de la estructura, relaciones entre los datos, etc
+
+    EL DICCIONARIO DEBE CONTENER:
+        la descripcion externa, conceptual e interna de la base de datos
+        las restricciones sobre los datos
+        el acceso a los datos
+        las descripciones de las cuentas de usuario
+        los permisos de los usuarios
+
+USUARIOS DE LOS SGBD:
+    podemos definir a los usuarios como toda persona que tenga todo tipo de contacto con el sistema de bse de datos desde que se diseña elabora, termina y usa
+
+ADMINISTRADOR DE BASE DE DATOS (DBA):
+    es la persona o equipo de personas profesionales responsables del control y manejo del sistema de base de datos, generalmente tiene (n) experiencia en DBMS, diseño de bases de datos, sistemas operativos, comunicacion de datos, hardware y programacion
+
+    LAS PRINCIPALES TAREAS DE UN DBA SON:
+        la definicion del esquema logico y fisico de la base de datos
+        la definicion de las vistas de usuario
+        la creacion de usuarios
+        la asignacion y edicion de permisos para los usuarios
+        mantenimiento y seguimiento de la seguridad en la bse de datos
+        mantenimiento general del sistema gestor de base de datos
+
+PROGRAMDAORES DE APLICACIONES:
+    los profesionales en computacionque interactuan por medio de llamadas en DML (lenguaje de manipulacion de datos), las cuales estan incorporadas en un programa escrito en un lenguaje de programacion (por ejemplo COBOL, C, Pascal)
+
+LOS LENGUAJES:
+    un sistema gestor de bases de daots debe proporcionar una serie de lenguajes para la definicion y manipulacion de datos:
+    SQL--
+        |
+        |--> DDL
+        |
+        |--> DML
+        |
+        |--> DCL
+
+USUARIOS SOFITSTICADOS:
+    los usuarios sofisticados interactuan con el sistema sin escribir programas, en cambio escriben sus preguntas en un lenguaje de consutlas de base de datos
+
+USUARIOS ESPECIALIZADOS:
+    algunos usuarios sofisticados escriben aplicaciones de base de datos especializadas que no encajan en el marco tradicional de procesamiento de datos
+
+USUARIOS INGENUOS:
+    los usuarios no sofisticados interactuan con el sistema invocando a uno de los progrmas de aplicacion permanentes que se han escruto anteriormente en el sistema de base de datos, podemos mencionar al usuario ingenuo como el usuario final que utiliza el sistema de bse de datos sin saber nada del diseño interno del mismo por ejemplo, un vendedor
+
+
+--------------------------------------------------------------------------------------------------------
+
+
+VENTAJAS DE UTILIZAR UN SISTEMA GESTOR DE BASE DE DATOS
+
+
 
 
 
