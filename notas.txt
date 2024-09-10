@@ -1,0 +1,113 @@
+BASES DE DATOS 1
+
+una base de datos es un conjunto de informacion almacenada y consultada sistematicamente
+no almaceno y consulto los datos al azar, la manipulacion de la infromacion se realiza de forma sistematica con reglas definidas -> si no hay un sistema no podemos hablar de una base de datos
+
+las bases de datos nos permiten almacenar la informacion se forma segura, garantizar la integridad de los datos, escalar la informacion y ser mas eficientes
+todo esto se logra gracias al poder de computo
+
+el sistema gestor de base de datos es el software que se encarga de hacer la gestion de la base de datos
+    sistema gestor != base de datos
+    sistema gestor = se pueden crear la estructura de la bdd, consultar informacion, agregar informacion, configurar permisos de acceso a la inforamcion
+    base de datos = estructura de datos como tal
+
+primera version de base de datos relacional:
+    Edgard Cott define los principios de las base de datos relaciones en los años 70, para que sean mas eficientes frente a las bases de datos de navegacion. estas bases de datos cambiarian para siempre las bases de datos
+    los datos son la base de las operaciones empresariales
+
+    en este tipo de bases de datos, se van a crear entidades que van a tener relaciones definidas entre ellas
+    cuando definimos un lugar en el que tenemos los datos pertenecientes a una entidad, definimos una tabla
+    los registros son cada uno de los datos guardados en la tabla (filas)
+    cada uno de los registros tiene campos (atributos) (columnas)
+    se crean relaciones entre tablas
+
+modelo entidad relacion:
+    el proceso de abstraer la necesidad del cliente y diseñar las tablas de datos, se hacen con el modelo de entidad relacion, se dibujan las entidades y las relaciones que van a tener entre ellas
+
+SQL: structured query lenguage, se divide en tres lenguajes:
+    DDL (DATA DEFINITION LENGUAGE): define las estructuras, tablas, registros, campos, pero no llenas informacion
+    DML (DATA MANIPULATION LENGUAGE): con DML haces CRUD
+    DCL (DATA CONTROL LENGUAGE): control de los permisos de las bases de datos
+    CRUD: create, read, update, delete
+    es inaceptable la redundancia de datos en bases de datos relacionales, su foco es la integridad de datos
+
+bases de datos no relaciones(no sql/ not only sql):
+    surgen en un paradigma en que estalla la web 2.0 y las bases de datos relacionales ya no son eficientes para gestionar millones y millones de datos en la web
+    no tienen una estructura definida, no se necesita un modelo entidad relacion
+    las bases de datos no relacionales pririzan el acceso rapido sobre la normalizacion, se busca ahorrar poder de computo
+    el foco de las bases de datos no relacionales es la velocidad de acceso, no la integridad de datos
+
+
+---------------------------------------------------------------------------------------------------
+
+
+SISTEMA:
+    conjunto de cosas que ordenamanete relacionadas entre si contribuyen a un determinado objeto
+
+SISTEMA DE INFORMACION:
+    sistemas que aglutinan los elementos que intervienen para gestionar la informacion que manejan los subsistmeas empresariales es lo que se conoce como sistemas de informacion
+    RECURSOS FISICOS:
+        carpetas, documentos, equipamiento, discos
+    RECURSOS HUMANOS:
+        personal que maneja la informacion
+    PROTOCOLO:
+        normas que debe cumplir la inforamcion para que sea manejada
+
+COMPONENTES DE UN SISTEMA DE INFORMACION:
+    DATOS:
+        se trata de la infromacion relevante que almacena y gestiona el sistema de infromacion
+    HARDWARE:
+        equipamiento fisico que se utiliza para gestionar los datos
+    SOFTWARE:
+        aplicaciones que permiten el funcionamiento adecuado del sistmea
+    RECURSOS HUMANOS:
+        personal que maneja el sistema de inforamcion
+
+SISTEMAS DE INFORMACION ORIENTADO A LOS DATOS:
+    en este tipo de sistemas los datos se centralizan en una base de datos comun a todas las aplicaciones
+    en esos sistemas los datos se almacenan en una unica estructura logica que es utilizable por las aplicaciones
+    atraves de esa etructura se accede a los datos que son comunes a todas las aplicaiones
+
+ELEMENTOS DE UN SISTMEA DE BASE DE DATOS:
+    HARDWARE:
+        maquinas en las que se almacenan las bases de datos, incorporan unidades de almacenamiento masivo para este fin
+    SOFTWARE:
+        es el sistmea gestor de base de datos, la aplicacion que permite el manejo de la base de datos
+    DATOS:
+        incluyen los datos que se necesitan almacenar y los metadatos que son datos que sirven apra describir lo que se almacena en la base de datos
+    USUARIOS:
+        personas que manipulan los datos del sistema
+
+--------------------------------------------------------------------------------------------------------
+
+
+PANORAMA DE LOS MODELOS DE DATOS:
+    un modelo de datos es una coleccion de herramientas que usualmente incluyen un tipo de diagrama y vocabulario especializado para describir la estructura de la base de datos.
+    un modelo de datos proporciona una descripcion de la estructura de la base de datos, incluidos los datos, las relaciones dentro de los datos y las restricciones sobre los datos y a veces semantica o significado de los datos.
+
+MODELOS DE DATOS:
+    MODELO JERARQUICO:
+        modelo de datos en el cual la organizacion es una etructura similar a un arbol.
+        permite que la informacion se organice en relaciones padre/hijo.
+        todos los artibutos de un registro especifico son catalogados bajo un tipo de entidad o tipo de registro.
+    MODELO DE RED:
+        conformado por una coleccion o set de registros conectados entre si por medio de ENLACES.
+        un REGISTRO es una coleccion o conjunto de atributos donde cada uno de ellos contiene solamente un valor.
+        el enlace es la asociacion entre dos registros.
+        un nodo hijo puede tener mas de un nodo padre y varios nodos pueden ser la via de acceso a la estructura.
+    MODELO RELACIONAL:
+        modelo de datos basado en la logica de predicados y en la teoria de conjuntos.
+        se basa en el uso de relaciones (conjuntos de datos o tuplas).
+        es el modelo mas utilizado en la actualidad para modelar y administrar datos dinamicamente
+    MODELO ORIENTADO A OBJETOS:
+        la inforamcion se representa mediante objetos como en la POO
+        un ODBMS (base de datos orientada a objetos) hace que los objetos de la base de datos hace que los datos aparezcan como objetos de un lenguaje de programacion
+        un ODBMS extiende los lenguajes con datos persistentes de forma transparente
+        si bien no es un modelo, la iniciativa ODMG(object data management group) proporciona estandares sobre la base de datos orientada a objetos
+    BASE DE DATOS NOSQL:
+     NOSQL se refiere a una base de datos no relacional
+     a diferencia de las bases de datos relacionales,
+
+
+
+
