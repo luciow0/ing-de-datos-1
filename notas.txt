@@ -456,6 +456,148 @@ TIPOS DE ATRIBUTOS:
     DOMINIO DE LOS ATRIBUTOS:
         cada uno de los atributos simples de un tipo de entidades esta asociado a un conjunto de valores (o dominio), que especifica los valores que es posible asignar a ese atributo para cada entidad individual
 
-        por ejemplo, si el intervalo de edades permitido para los empleados es de 16 a 70, podemos especificar el conjunto de valores para el atributo edadEMpleado como el conjunto de numeros entero entre 16 y 70
+        por ejemplo, si el intervalo de edades permitido para los empleados es de 16 a 70, podemos especificar el conjunto de valores para el atributo edadEmpleado como el conjunto de numeros entero entre 16 y 70
 
         LOS CONJUNTOS DE VALORES NO SE REPRESENTAN EN LOS DIAGRAMAS E-R
+
+    VALORES NULOS:
+        en ocasines el valor de dicho atributo se desconoce en el momento actual o no esta definido para una instancia particular
+
+        en una base de datos, a algunos atributos se les puede permitir tener VALORES NULOS para algunas instancias de entidades
+
+        en dicho caso, la instancia de entidad no se mapeara al dominio del atributo, aunque otras instancias del mismo conjunto de entidades se mapearan al dominio de atributos
+
+--------------------------------------------------------------------------------------------------------
+
+    RELACIONES:
+        # es una correspondencia o asociacion entre dos o mas entidades
+
+        # cada relacion tiene un nombre que describe su funcion
+
+        # las relaciones se represetan graficamente mediante rombos y su nombre aparece en el interior
+
+        # la cantidad de entidades en una relacion determina el GRADO DE LA RELACION
+
+        Existen dos tipos de limitantes que permiten establecer las validaciones necesarias para conseguir que los datos correspondan con la readlidad:
+
+           1- TIPOS DE RELACIONES
+
+           2- DEPENDENCIA DE EXISTENCIA
+
+    TIPOS DE RELACIONES:
+        existen 4 tipos de relaciones que pueden establecerse entre entidades, las cuales establecen con cuantas entidades de tipo B se puede relacionar una entidad de tipo A:
+
+            uno a uno (1:1)
+
+            uno a muchos (1:N)
+
+            muchos a uno (N:1)
+
+            muchos a muchos (N:N)
+
+       IMPORTANTE a estos tipos de relaciones tambien se les conoce como CARDINALIDAD
+
+    CUANDO SE GRAFICA LA RELACION SIEMPRE DEBE ESTAR PRESENTE EL ROMBO EN EL MEDIO
+
+    UNO A UNO (1:1)          1 <------------------> 1
+        se representa cuando existe una relacion como su nombhre lo indica de uno a uno, denominado tambien relacion de matrimonio.
+
+        una entidad del tipo A solo se puede relacionar con una entidad del tipo B y vicebersa
+
+    UNO A MUCHOS (1:N)        1 <---------------- N
+        significa que una entidad del tipo A puede relacionarse con cualquier cantidad de entidades del tipo B, y una entidad del tipo B solo puede estar relacionada con una entidad del tipo A
+
+    MUCHOS A UNO (N:1)          N --------------> 1
+        indica que una entidad del tipo B puede estar relacionarse con cualquier cantidad de entidades del tipo A, mientras que cada entidad del tipo A solo puede relacionarse con una entidad del tipo B
+
+    MUCHOS A MUCHOS (N:N)       N ---------------- N
+        establece que cualquier cantidad de entidades del tipo A pueden estar relacionadas con cualquier cantidad de entidades del tipo B
+
+---------------------------------------------------------------------------------------------------
+
+CLAVES
+
+    CLAVE CANDIDATA:
+        atributo que identifica univocamente una tupla. cualquiera de las claves candidatas se podria elegir como clave principal
+
+    CLAVE PRIMARIA (PK):
+        clave candidata que elegimos como identificador de la tupla, la clave primaria va a identificar univocamente a cada tupla, y sera utilizada para identificar a la tabla desde la clave foranea de otra tabla
+        (una clave primara NO PUEDE ASUMIR UN VALOR NULO)
+        (INTEGRIDAD DE ENTIDAD)
+
+    CLAVE ALTERNATIVA:
+        toda clave candidata que no es clave primaria (las que no hayamos elegido como clave principal)
+
+    CLAVE EXTERNA O FORANEA O AJENA (FK):
+        el atributo o conjunto de atributos que forman la clave principal de otra relacion
+        es decir, los valores presentes en la clave externa tienen que corresponder a valores presentes en la clave principal correspondiente (INTEGRIDAD REFERENCIAL)
+
+DEPENDENCIA DE EXISTENCIA
+    refiriendonos a las mismas entidades A y B, decimos que si la entidad A depende de la existencia de la entidad B, entonces A es dependiente de existencia por B, si eliminamos B tendriamos que eliminar por consecuente la entidad A, en este caso B es la ENTIDAD DOMINANTE y A es la ENTIDAD SUBORDINADA
+
+
+MAS SOBRE RELACIONES:
+
+    RELACION BASE:
+        relacion autonoma con nombre propio y datos propios
+
+    RELACION DERIVADA:
+        relacion definida mediante expresiones de algebra relacional en terminos de otras relciones (Vista) no posee datos propios
+
+    INSTANTANEA:
+        relacion derivada no actualizable, tiene datos asociados aunque no propios
+
+    RESULTADOS DE CONSULTAS:
+        relacion derivada generalmente sin nombre, existe mientras existe la sesion en la que fue creada
+
+INTEGRIDAD:
+
+toda estructura de datos posee restricciones de integridad especificas para esa estructura (reglas de negocios)
+
+existen combinaciones de datos que no tienen significado en el mundo real (Ejemplo, pesos negativos)
+
+las estructuras de datos requieren de reglas de integridad que impidan la ocurrencia de combinaciones de datos imposibles
+
+
+-------------------------------------------------------------------------------------------------------
+
+CLASE 4
+
+CONCEPTOS DE MODELO RELACIONAL
+ESTRUCTURA DE DATOS RELACIONALES
+TRANSFORMACION DEL MODELO E-R AL MODELO RELACIONAL
+CREACION DE ESTRUCTURAS SQL
+MICROSOFT SQL SERVER
+
+1-DETERMINACION Y ANALISIS DE REQUERIMIENTOS -> estudio y dominio del problema
+                                      -> requierimientos de la base de datos
+2-DISEÑO CONCEPTUAL
+                    -> esquema conceptual (alto nivel)
+3-DISEÑO LOGICO                                          independiente del DBMS
+                  -> esquema logivo RDBMS
+---------------------------------------------------
+4-DISEÑO FISICO                                          dependiente del DBMS
+
+5-ESQUEMA INTERNO
+
+
+¿QUE ES MODELADO DE DATOS?
+
+ANALIZAR EL MUNDO REAL, INTERPRETARLO. ABSTRAER LAS PARTES IMPORTANTES PARA LLEGAR A UN MODELO
+
+---------------------------------------------------------------------------------------------------
+
+-------ESTRUCTURAS DE DATOS RELACIONALES----------
+
+TABLA
+    el modelo relacional se basa en el concepto de relacion, que se representa fisicamente como una tabla o arreglo bidimensional
+
+    una relacion se representa como una tabla bidimensional en la que las filas de la tabla corresponden a los registros individuales y las columnas corresponden a los atributos
+
+DOMINIO
+    el dominio D de un atributo es el conjunto de valores permisibles para dicho atributo
+
+    los dominios pueden ser distintos, o dos o mas atributos pueden tener el mismo dominio
+
+TUPLA
+    cada fila de la tabla corresponde a un registro individual o instancia de entidad, en el modelo relacional cada fila se llama tupla
