@@ -601,3 +601,54 @@ DOMINIO
 
 TUPLA
     cada fila de la tabla corresponde a un registro individual o instancia de entidad, en el modelo relacional cada fila se llama tupla
+
+
+TRANSFORMACION DEL DIAGRAMA E-R AL MODELO RELACIONAL
+
+MODELO RELACIONAL | INTEGRIDAD RELACIONAL
+
+    con este nomber se designa aquellas reglas que han de ser aplicadas a una base de datos para asegurar que los datos introducidos sean consistentes con la realidad que pretenden modelar. existen dos reglas generales que aporta el modelo relacional. estas dos reglas son muy simples y son las siguientes:
+
+        regla de integridad de las entidades:
+            ningun componente de la calve primaria de una relacion base puede acpetar valores nulos
+
+        regla de integridad referencial:
+            la base de datos no debe contener valores de clave foranea sin concordancia
+
+para transformar un modelo entidad-relacion a modelo relacional seguiremos las siguientes reglas:
+
+        1- toda entidad del modelo entidad-relacion se transforma en una tabla
+
+        2- cualquier atributo de una entidad se transforma en un campo dentro la tabla, manteniendo las claves primarias
+
+        3- las relaciones (N:M) se transforman en una nueva tabla que tendra como clave primaria la concatenacion de los atributos clave de las entidades que relaciona
+
+        4- en las relaciones 1:N se pueden tener dos casos
+
+            1- si la entidad que participa con cardinalidad maxima uno lo hace tambien con cardinalidad minima uno, entonces se propaga el atributo de la entidad que tiene cardinalidad maxima 1 a la que tiene cardinalidad minima N, desapareciendo el nombre de la relacion. si existen atributos en la relacion estos tambien se propagaran.
+
+            2- si la entidad que participa con cardinalidad maxima uno lo hace tambien con cardinalidad minima cero, entonces se crea una nueva tabla formada por las claves de cada entidad y los atributos de la relacion. la clave primaria de la nueva tabla sera el identificador de la entidad que participa con cardinaldiad maxima N
+
+        5- en el caso de las relaciones 1:1 tambien pueden darse dos casos:
+
+            1- si las entidades poseen cardinalidades (0,1), la relacion se convierte en una tabla
+
+            2- si una de las entidades posee cardinalidad (0,1) y la otra(1,1), conviene propagar la clave de la entidad con cardinalidad (1,1) a la tabla resultante de la entidad con cardinalidad (0,1). si ambas entidades poseen cardinalidades (1,1) se puede propagar la clave de cualquiera de ellas a la tabla resultante de la otra
+
+        6- en el caso de las relaciones N-arias se aplic ala misma regla que para las relaciones N:M
+
+
+EJEMPLO REGLA 3: diapositiva 26 clase 4
+EJEMPLO RELGA 4: diapositiva 27 clase 4
+EJEMPLO RELGA 4: diapositiva 28 clase 4
+EJEMPLO REGLA 5: diapositiva 29 clsae 4
+
+--------------------------------------------------------------------------------------------------------
+
+CREACION DE ESTRUCTURAS SQL
+
+
+
+
+
+
