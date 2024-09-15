@@ -1,0 +1,305 @@
+FORMAS DE DEFINIR LA CLAVE PRIMARIA
+                |
+                |
+                |
+                |
+                |
+                V
+
+En SQL Server Express (o cualquier versión de SQL Server), puedes definir una clave primaria de varias maneras al crear una tabla. Aquí tienes algunas de las formas más comunes:
+1. Definir la clave primaria al crear la tabla
+
+sql
+
+CREATE TABLE nombre_tabla (
+    id INT PRIMARY KEY, -- Definir la clave primaria directamente en la columna
+    nombre VARCHAR(100),
+    edad INT
+);
+
+En este caso, id es la clave primaria y se define junto a su tipo de dato.
+2. Usar una restricción para definir la clave primaria
+
+Puedes definir la clave primaria usando una restricción CONSTRAINT:
+
+sql
+
+CREATE TABLE nombre_tabla (
+    id INT,
+    nombre VARCHAR(100),
+    edad INT,
+    CONSTRAINT pk_nombre_tabla PRIMARY KEY (id) -- Definir la clave primaria con una restricción
+);
+
+En este ejemplo, pk_nombre_tabla es el nombre de la restricción, pero puedes usar cualquier nombre.
+3. Definir una clave primaria compuesta (múltiples columnas)
+
+Si necesitas una clave primaria que combine más de una columna, puedes hacerlo de la siguiente manera:
+
+sql
+
+CREATE TABLE nombre_tabla (
+    id INT,
+    nombre VARCHAR(100),
+    edad INT,
+    CONSTRAINT pk_nombre_tabla PRIMARY KEY (id, nombre) -- Clave primaria compuesta por id y nombre
+);
+
+En este caso, la combinación de id y nombre forma la clave primaria.
+4. Agregar la clave primaria a una tabla existente
+
+Si ya has creado la tabla y quieres agregar la clave primaria después, puedes usar ALTER TABLE:
+
+sql
+
+ALTER TABLE nombre_tabla
+ADD CONSTRAINT pk_nombre_tabla PRIMARY KEY (id);
+
+Estas son las formas más comunes para definir una clave primaria en SQL Server Express.
+You said:
+
+Puedes definir la clave primaria usando una restricción `CONSTRAINT`:
+en que casos se utiliza esta forma o que utilidad tiene
+ChatGPT said:
+ChatGPT
+
+Definir una clave primaria usando una restricción CONSTRAINT en SQL Server Express (y otras bases de datos relacionales) es útil en varios casos específicos. A continuación se detallan algunos de estos casos y su utilidad:
+1. Mayor claridad y control sobre los nombres de las restricciones
+
+    Caso: En entornos de producción, es importante tener control sobre los nombres de las restricciones para mejorar la legibilidad y el mantenimiento de la base de datos.
+    Utilidad: Al usar CONSTRAINT, puedes asignar un nombre significativo a la clave primaria, como pk_nombre_tabla. Esto facilita el rastreo y la gestión de la base de datos, especialmente cuando trabajas con grandes equipos o proyectos complejos. SQL Server genera nombres por defecto si no defines uno, lo que puede dificultar la depuración o modificación más tarde.
+
+sql
+
+CONSTRAINT pk_nombre_tabla PRIMARY KEY (id)
+
+2. Definir claves primarias compuestas
+
+    Caso: Cuando necesitas que la clave primaria se base en más de una columna (clave compuesta), es recomendable utilizar la cláusula CONSTRAINT.
+    Utilidad: En situaciones donde ninguna columna individualmente puede garantizar la unicidad de los datos, como tablas de asociaciones o tablas intermedias en relaciones muchos a muchos, se define una clave primaria compuesta para asegurar que la combinación de los valores de varias columnas sea única.
+
+sql
+
+CONSTRAINT pk_composite PRIMARY KEY (id, nombre)
+
+3. Agregar una clave primaria después de la creación de la tabla
+
+    Caso: A veces, las tablas se crean sin definir inicialmente una clave primaria, pero se necesita agregar una más tarde.
+    Utilidad: Usar CONSTRAINT te permite definir o modificar la clave primaria posteriormente sin tener que recrear la tabla.
+
+sql
+
+ALTER TABLE nombre_tabla
+ADD CONSTRAINT pk_nombre_tabla PRIMARY KEY (id);
+
+4. Refuerzo de integridad referencial y otras restricciones
+
+    Caso: En bases de datos con varias relaciones, las claves primarias suelen estar relacionadas con claves foráneas en otras tablas.
+    Utilidad: Definir la clave primaria con CONSTRAINT permite garantizar que las relaciones entre tablas se mantengan con integridad referencial. Al tener control sobre el nombre de la restricción, puedes referenciarlo claramente en las claves foráneas de otras tablas.
+
+5. Mejora de la consistencia en bases de datos grandes
+
+    Caso: Cuando trabajas con bases de datos que tienen muchas tablas y relaciones complejas, definir las restricciones con nombres personalizados facilita la documentación y el mantenimiento.
+    Utilidad: Al definir explícitamente una restricción con CONSTRAINT, se mejora la consistencia del esquema, ya que es más fácil identificar y rastrear las relaciones entre tablas, claves primarias y foráneas, especialmente cuando el sistema crece.
+
+En resumen, definir una clave primaria con CONSTRAINT ofrece mayor flexibilidad y control sobre la estructura de la base de datos, permitiendo un mejor manejo en entornos de producción o en situaciones donde se requiere mayor claridad, como en bases de datos complejas o con claves compuestas.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+FORMAS DE INSERTAR VALORES EN UNA TABLA
+                |
+                |
+                |
+                |
+                |
+                V
+
+En SQL Server Express, puedes insertar valores en una tabla de varias maneras. Aquí algunos métodos comunes:
+
+    Insertar una fila de valores específicos:
+
+    sql
+
+INSERT INTO nombre_tabla (columna1, columna2, columna3)
+VALUES (valor1, valor2, valor3);
+
+Insertar varias filas de valores:
+
+sql
+
+INSERT INTO nombre_tabla (columna1, columna2, columna3)
+VALUES
+(valor1a, valor2a, valor3a),
+(valor1b, valor2b, valor3b);
+
+Insertar datos de otra tabla:
+
+sql
+
+INSERT INTO nombre_tabla_destino (columna1, columna2)
+SELECT columna1, columna2
+FROM nombre_tabla_origen
+WHERE condición;
+
+Insertar con valores predeterminados (si la columna tiene un valor por defecto):
+
+sql
+
+INSERT INTO nombre_tabla (columna1, columna2)
+DEFAULT VALUES;
+
+Usar la cláusula OUTPUT para devolver los valores insertados:
+
+sql
+
+    INSERT INTO nombre_tabla (columna1, columna2)
+    OUTPUT INSERTED.columna1, INSERTED.columna2
+    VALUES (valor1, valor2);
+
+Estos métodos te permiten insertar datos en una tabla de acuerdo a las necesidades de tu consulta.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+RESTRICCIONES EN SQL
+        |
+        |
+        |
+        |
+        |
+        V
+
+En SQL, las **restricciones** (o *constraints*) son reglas que aplicás a las columnas de una tabla para controlar los datos que se insertan en ellas. Estas restricciones aseguran la integridad y validez de los datos.
+
+Algunos tipos de restricciones más comunes son:
+
+1. **NOT NULL**: Evita que una columna acepte valores nulos (vacíos).
+2. **UNIQUE**: Garantiza que todos los valores en una columna sean únicos.
+3. **PRIMARY KEY**: Combinación de NOT NULL y UNIQUE. Se usa para identificar de manera única cada fila en una tabla.
+4. **FOREIGN KEY**: Enlaza una columna con la clave primaria de otra tabla, asegurando la integridad referencial.
+5. **CHECK**: Define una condición que los valores de una columna deben cumplir.
+6. **DEFAULT**: Establece un valor por defecto para una columna si no se especifica otro al insertar datos.
+
+Estas restricciones te ayudan a mantener la consistencia y precisión en la base de datos, evitando errores o datos inválidos.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+IDENTITY
+    |
+    |
+    |
+    |
+    |
+    V
+
+En SQL Server, puedes declarar un campo
+autoincremental utilizando la palabra clave IDENTITY.
+Esta cláusula se utiliza al definir una columna en una
+tabla y especifica el valor inicial y el incremento para
+cada nuevo registro. Cuando declaras un campo con
+el atributo IDENTITY en SQL Server, no es necesario
+especificar NOT NULL.
+
+        idDpto int IDENTITY(100,1) PRIMARY KEY,
+
+si utilizas esta forma para un campo, depsues cuando insertes los valores no hace falta que hagas mencion a este atributo
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+LIMPIAR LOS DATOS DE UNA TABLA
+            |
+            |
+            |
+            |
+            |
+            |
+            V
+
+Para limpiar los valores de una tabla en SQL Server Express, puedes usar el comando `TRUNCATE TABLE` o `DELETE FROM`, dependiendo de tus necesidades. Aquí te explico la diferencia:
+
+### 1. `TRUNCATE TABLE`
+- **Uso**: Elimina todas las filas de una tabla de manera rápida y sin registrar la eliminación de cada fila individualmente, lo que lo hace más eficiente.
+- **Limitaciones**: No puedes usar `TRUNCATE TABLE` si hay restricciones de clave foránea que referencian la tabla o si la tabla es una tabla con una identidad que se va a reiniciar.
+
+```sql
+TRUNCATE TABLE nombre_de_la_tabla;
+```
+
+### 2. `DELETE FROM`
+- **Uso**: Elimina todas las filas de una tabla, pero mantiene el registro de cada eliminación, lo que puede ser más lento si hay muchas filas. También puedes utilizar cláusulas `WHERE` para eliminar solo ciertas filas.
+- **Limitaciones**: A diferencia de `TRUNCATE TABLE`, `DELETE FROM` puede ser utilizado incluso si hay restricciones de clave foránea.
+
+```sql
+DELETE FROM nombre_de_la_tabla;
+```
+
+Ambos comandos eliminarán los datos, pero elige el que mejor se adapte a tus necesidades. Si solo quieres eliminar ciertos datos, `DELETE FROM` con una cláusula `WHERE` es más adecuado. ¿Necesitas ayuda con alguna de estas opciones en particular?
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------v------
+
+MOSTRAR DATOS
+      |
+      |
+      |
+      |
+      |
+      V
+
+SELECT * FROM nombre_de_tu_tabla;
+
+Si querés hacer consultas más específicas, podés usar WHERE para filtrar los datos y asegurarte de que las inserciones específicas fueron exitosas:
+
+SELECT * FROM nombre_de_tu_tabla WHERE columna = valor;
+
+Para elegir qué columnas mostrar en una consulta SQL en SQL Server, especificás las columnas que querés incluir en la cláusula SELECT. En lugar de usar el asterisco (*) para seleccionar todas las columnas, podés listar explícitamente las columnas que deseás ver.
+
+Por ejemplo, si tenés una tabla llamada Empleados con las columnas ID, Nombre, Edad y Departamento, pero solo querés mostrar Nombre y Edad, usarías la siguiente consulta:
+
+sql
+
+SELECT Nombre, Edad
+FROM Empleados;
+
+Ejemplo de consultas específicas
+
+    Mostrar columnas seleccionadas:
+
+    sql
+
+SELECT columna1, columna2, columna3
+FROM nombre_de_tu_tabla;
+
+Mostrar columnas con condiciones:
+
+sql
+
+SELECT columna1, columna2
+FROM nombre_de_tu_tabla
+WHERE columna1 = valor;
+
+Mostrar columnas con ordenamiento:
+
+sql
+
+SELECT columna1, columna2
+FROM nombre_de_tu_tabla
+ORDER BY columna1;
+
+Mostrar columnas con alias:
+
+sql
+
+    SELECT columna1 AS 'NuevoNombre', columna2 AS 'OtroNombre'
+    FROM nombre_de_tu_tabla;
+
+Uso de alias
+
+Podés usar alias para darle nombres más descriptivos a las columnas en el resultado:
+
+sql
+
+SELECT columna1 AS 'Nombre Descriptivo', columna2 AS 'Otro Nombre'
+FROM nombre_de_tu_tabla;
+
+Esto puede ser útil para hacer que los resultados sean más legibles o para dar nombres más significativos en el contexto de la consulta.
+
+
