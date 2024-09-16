@@ -234,7 +234,7 @@ DELETE FROM nombre_de_la_tabla;
 
 Ambos comandos eliminarán los datos, pero elige el que mejor se adapte a tus necesidades. Si solo quieres eliminar ciertos datos, `DELETE FROM` con una cláusula `WHERE` es más adecuado. ¿Necesitas ayuda con alguna de estas opciones en particular?
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------v------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 MOSTRAR DATOS
       |
@@ -302,4 +302,123 @@ FROM nombre_de_tu_tabla;
 
 Esto puede ser útil para hacer que los resultados sean más legibles o para dar nombres más significativos en el contexto de la consulta.
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+MODIFICAR TABLA
+        |
+        |
+        |
+        |
+        |
+        V
+
+El comando `ALTER` en SQL se usa para modificar la estructura de una tabla existente. Permite agregar, eliminar o cambiar columnas, así como modificar restricciones y propiedades de la tabla. Por ejemplo, puedes usar `ALTER TABLE` para añadir una nueva columna a una tabla o cambiar el tipo de datos de una columna existente.
+
+------------------------------------------------------------------------------------------------------------------------
+
+USAR VS NO USAR CONSTRAINT
+          |
+          |
+          |
+          |
+          |
+          V
+
+En SQL, la diferencia principal entre declarar una clave primaria o foránea simplemente como una columna y hacerlo usando una CONSTRAINT radica en la forma en que se definen y administran estas restricciones en una tabla. Aquí está la distinción:
+
+    Definición Implícita:
+
+        Clave Primaria: Puedes definir una clave primaria al momento de crear una columna. Por ejemplo:
+
+        sql
+
+CREATE TABLE Empleados (
+    ID INT PRIMARY KEY,
+    Nombre VARCHAR(100)
+);
+
+En este caso, ID es una clave primaria sin usar explícitamente una CONSTRAINT.
+
+Clave Foránea: Similarmente, puedes definir una clave foránea directamente en la columna:
+
+sql
+
+    CREATE TABLE Pedidos (
+        ID INT,
+        EmpleadoID INT REFERENCES Empleados(ID)
+    );
+
+    Aquí, EmpleadoID es una clave foránea que referencia Empleados(ID).
+
+Definición Explícita con CONSTRAINT:
+
+    Clave Primaria: Puedes usar la cláusula CONSTRAINT para darle un nombre a la clave primaria, lo cual es útil para referencia y administración:
+
+    sql
+
+CREATE TABLE Empleados (
+    ID INT,
+    Nombre VARCHAR(100),
+    CONSTRAINT pk_empleados PRIMARY KEY (ID)
+);
+
+Esto define una clave primaria con un nombre explícito (pk_empleados), lo que facilita su identificación y referencia en otras partes del esquema o en futuros comandos.
+
+Clave Foránea: De manera similar, puedes usar CONSTRAINT para nombrar la clave foránea:
+
+sql
+
+        CREATE TABLE Pedidos (
+            ID INT,
+            EmpleadoID INT,
+            CONSTRAINT fk_empleado FOREIGN KEY (EmpleadoID) REFERENCES Empleados(ID)
+        );
+
+        Esto define una clave foránea con un nombre específico (fk_empleado).
+
+Ventajas de Usar CONSTRAINT
+
+    Identificación y Gestión: Los nombres explícitos permiten una gestión más clara de las restricciones. Si necesitas modificar o eliminar una restricción, tener un nombre facilita la tarea.
+
+    Documentación: Los nombres de las restricciones sirven como documentación dentro de la base de datos, haciendo más claro el propósito de cada restricción.
+
+    Escalabilidad: En bases de datos más complejas con muchas relaciones y restricciones, usar CONSTRAINT facilita el mantenimiento y la comprensión del esquema de la base de datos.
+
+En resumen, usar CONSTRAINT te da más control y claridad sobre cómo se administran las claves primarias y foráneas en tu base de datos
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+DROP. FORMAS DE USAR
+        |
+        |
+        |
+        |
+        V
+
+Aquí te explico cada uno de los comandos DROP y ALTER:
+
+    DROP TABLE nombreTabla;
+    Este comando elimina una tabla de la base de datos. Todos los datos almacenados en la tabla, así como su definición, se perderán definitivamente.
+        Ejemplo: DROP TABLE Clientes; eliminaría la tabla llamada Clientes.
+
+    DROP PROCEDURE nombreProcedimiento;
+    Elimina un procedimiento almacenado (o función) de la base de datos. Un procedimiento almacenado es un conjunto de instrucciones SQL que se pueden ejecutar como una unidad.
+        Ejemplo: DROP PROCEDURE ObtenerClientes; eliminaría el procedimiento almacenado llamado ObtenerClientes.
+
+    DROP DATABASE nombreBaseDatos;
+    Elimina completamente una base de datos, incluyendo todas sus tablas, vistas, procedimientos almacenados, etc. Esto no se puede revertir, por lo que debes tener mucho cuidado al usar este comando.
+        Ejemplo: DROP DATABASE Ventas; eliminaría la base de datos Ventas junto con todos sus objetos.
+
+    DROP VIEW nombreVista;
+    Elimina una vista de la base de datos. Una vista es una consulta guardada que se puede tratar como una tabla. La vista no contiene datos en sí misma, solo una consulta que se ejecuta cada vez que se accede.
+        Ejemplo: DROP VIEW VistaClientesActivos; eliminaría la vista llamada VistaClientesActivos.
+
+    DROP INDEX nombreIndice ON nombreTabla;
+    Elimina un índice de una tabla. Un índice mejora el rendimiento de las consultas al permitir búsquedas más rápidas en las tablas.
+        Ejemplo: DROP INDEX IDX_Clientes_Nombre ON Clientes; eliminaría el índice IDX_Clientes_Nombre de la tabla Clientes.
+
+    ALTER TABLE nombreTabla DROP CONSTRAINT nombreRestriccion;
+    Elimina una restricción (constraint) de una tabla. Las restricciones se utilizan para aplicar reglas sobre los datos en las tablas, como claves foráneas, restricciones de unicidad o verificaciones de valores.
+        Ejemplo: ALTER TABLE Pedidos DROP CONSTRAINT FK_Pedido_Cliente; eliminaría la restricción de clave foránea llamada FK_Pedido_Cliente de la tabla Pedidos.
+
+En resumen, los comandos DROP eliminan elementos de la base de datos (tablas, procedimientos, índices, etc.), mientras que ALTER TABLE ... DROP CONSTRAINT se usa para eliminar restricciones específicas en tablas. ¡Debes tener mucho cuidado con estos comandos ya que la eliminación de estos objetos es permanente!
