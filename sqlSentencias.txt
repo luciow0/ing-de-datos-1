@@ -422,3 +422,79 @@ Aquí te explico cada uno de los comandos DROP y ALTER:
         Ejemplo: ALTER TABLE Pedidos DROP CONSTRAINT FK_Pedido_Cliente; eliminaría la restricción de clave foránea llamada FK_Pedido_Cliente de la tabla Pedidos.
 
 En resumen, los comandos DROP eliminan elementos de la base de datos (tablas, procedimientos, índices, etc.), mientras que ALTER TABLE ... DROP CONSTRAINT se usa para eliminar restricciones específicas en tablas. ¡Debes tener mucho cuidado con estos comandos ya que la eliminación de estos objetos es permanente!
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+SELECT
+    |
+    |
+    |
+    |
+    |
+    V
+
+SELECT lista de columnas
+[ INTO tabla destino ]
+FROM origen de datos
+[ WHERE expresión ]
+[ GROUP BY criterio de agrupamiento ]
+[ HAVING condición del agrupamiento ]
+[ ORDER BY ordenamiento [ ASC | DESC ] ]
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+CLAUSULA WHERE
+      |
+      |
+      |
+      |
+      |
+      |
+      V
+
+WHERE [ NOT ] < expresión_booleana >
+[ AND | OR [ NOT ]
+< expresión_booleana 2>]
+▪ Limita los registros para los cuales un predicado es verdadero.
+▪ La expresión puede ser tan compleja como se desee, siempre
+y cuando sea válida y devuelva un valor booleano.
+▪ La presencia de nulos en la expresión deriva en una lógica de
+tres estados (verdadero, falso, desconocido).
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CLAUSULA GROUP
+      |
+      |
+      |
+      |
+      |
+      V
+
+GROUP BY { columna [, columna, …] }
+▪ Especifica el criterio por el cual la tabla va a ser agrupada y
+calcula los resultados de las funciones estadísticas definidas
+en la sentencia SELECT.
+▪ Estos resultados se incluyen en columnas separadas junto a las
+columnas del criterio (no necesariamente deben aparecer en
+el resultado)
+▪ Pueden usarse los grupos generados en la clausula HAVING.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CLAUSULA HAVING
+        |
+        |
+        |
+        |
+        |
+        V
+SQL – SELECT | CLÁUSULA HAVING
+HAVING [ NOT ] < expresión_booleana >
+[ AND | OR [ NOT ]
+< expresión_booleana 2>]
+▪ Limita los grupos para los cuales un predicado es
+verdadero.
+▪ La expresión debe involucrar a un operador de totales o
+una columna del criterio de selección (no muy
+ortodoxo).
